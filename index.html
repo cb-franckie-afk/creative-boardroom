@@ -284,16 +284,16 @@ h1,h2,h3,h4,.display{
           <img src="images/jelle.jpg" alt="Jelle" class="w-full h-full object-cover">
         </div>
         <figcaption class="mt-4">
-          <p class="font-medium">Jelle</p>
+          <p class="font-medium">Jelle [achternaam]</p>
           <p class="text-soft text-sm">Finance &amp; strategie</p>
         </figcaption>
       </figure>
       <figure class="reveal">
         <div class="aspect-[4/5] rounded-[14px] overflow-hidden" style="border:1px solid var(--line);">
-          <img src="images/DSC_5192.jpg" alt="Franck" class="w-full h-full object-cover">
+          <img src="images/franck.jpg" alt="Franck" class="w-full h-full object-cover">
         </div>
         <figcaption class="mt-4">
-          <p class="font-medium">Franckie</p>
+          <p class="font-medium">Franckie [achternaam]</p>
           <p class="text-soft text-sm">Groei &amp; positionering</p>
         </figcaption>
       </figure>
@@ -624,6 +624,53 @@ h1,h2,h3,h4,.display{
   </div>
 </section>
 
+<!-- PIONIERS — laagdrempelig alternatief, bewust kleiner dan Boardroom -->
+<section class="py-16 md:py-20 border-t border-[var(--line)]">
+  <div class="container max-w-lg">
+    <h3 class="text-xl md:text-2xl font-semibold leading-snug reveal">Nog niet klaar voor een vaste plek aan tafel?</h3>
+
+    <div class="mt-5 text-soft leading-relaxed reveal">
+      <p>Dat hoeft ook niet.</p>
+      <p class="mt-3">Sommige ondernemers zitten nog niet op het punt waarop ze een Boardroom-abonnement nodig hebben. Maar ze willen wel beter leren sturen op cijfers, cash en beslissingen.</p>
+    </div>
+
+    <div class="mt-10 reveal">
+      <p class="text-xs tracking-[0.08em] text-soft mb-1">Pioniers · voor de eerste 25 bedrijven</p>
+      <p class="mt-2">
+        <span class="figure text-2xl font-semibold">€49</span><span class="text-soft text-sm"> / maand</span>
+        <span class="text-soft text-sm mx-2">of</span>
+        <span class="figure text-2xl font-semibold">€490</span><span class="text-soft text-sm"> / jaar</span>
+      </p>
+
+      <ul class="mt-6 space-y-2 text-sm text-soft">
+        <li>✓ Google Sheets-templates</li>
+        <li>✓ Besloten community</li>
+        <li>✓ Kwartaal-Q&amp;A</li>
+        <li>✓ Praktische beslissingskaders</li>
+        <li>✓ Inzichten uit echte Boardroom-gesprekken</li>
+      </ul>
+
+      <p class="mt-6 text-sm text-soft">Geen vaste sparringpartner. Wel een goede eerste stap.</p>
+    </div>
+
+    <div class="mt-8 reveal">
+      <p class="text-xs text-soft">Beschikbaar voor maximaal 25 bedrijven.</p>
+      <p id="pioneerCountLabel" class="text-xs text-soft mt-2">18 plaatsen beschikbaar</p>
+      <div class="mt-2 h-[3px] w-full rounded-full" style="background:var(--line);">
+        <div id="pioneerCountBar" style="height:100%;border-radius:99px;background:var(--ink-soft);width:72%;"></div>
+      </div>
+    </div>
+
+    <a href="#final-cta" class="mt-8 btn-ghost inline-flex reveal">Vraag toegang aan</a>
+  </div>
+</section>
+
+<script>
+// Pioniers-teller: pas deze twee waarden aan wanneer plaatsen veranderen
+window.PIONEER_SPOTS_TOTAL = 25;
+window.PIONEER_SPOTS_LEFT = 18;
+</script>
+
 <!-- FINAL CTA -->
 <section id="final-cta" class="py-24 md:py-32 border-t border-[var(--line)] relative overflow-hidden">
   <div class="container text-center relative">
@@ -853,6 +900,18 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 revealEls.forEach(el => io.observe(el));
+
+// Pioniers-teller: leest window.PIONEER_SPOTS_TOTAL / PIONEER_SPOTS_LEFT (zie sectie hierboven)
+(function(){
+  const total = window.PIONEER_SPOTS_TOTAL;
+  const left = window.PIONEER_SPOTS_LEFT;
+  const label = document.getElementById('pioneerCountLabel');
+  const bar = document.getElementById('pioneerCountBar');
+  if (!total || left == null || !label || !bar) return;
+  label.textContent = left + ' plaatsen beschikbaar';
+  const takenPct = Math.max(0, Math.min(100, ((total - left) / total) * 100));
+  bar.style.width = takenPct + '%';
+})();
 
 const lineEls = document.querySelectorAll('.line-grow');
 const lineIo = new IntersectionObserver((entries) => {
