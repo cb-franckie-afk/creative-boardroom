@@ -31,6 +31,8 @@ body{
 h1,h2,h3,h4,.display{
   font-family:'Inter Tight',system-ui,sans-serif;
   letter-spacing:-0.02em;
+  overflow-wrap:break-word;
+  word-break:break-word;
 }
 .container{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px;}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;}
@@ -79,6 +81,11 @@ h1,h2,h3,h4,.display{
 .nav-link:hover{color:var(--ink);}
 
 #mobileMenu{
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  background:var(--bg);
   transform:translateY(-8px);
   opacity:0;
   pointer-events:none;
@@ -245,41 +252,28 @@ h1,h2,h3,h4,.display{
 </section>
 
 <!-- FOUNDERS → DECISION: conversationele overgang -->
-<section id="bridge-scroll" style="height:220vh;" class="relative border-t border-[var(--line)]">
-  <div id="bridgeSticky" class="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-    <div class="container relative text-center">
-      <p class="bridge-line display text-3xl md:text-5xl font-medium" data-idx="0">Oké. Genoeg over ons.</p>
-      <p class="bridge-line text-sm md:text-base text-soft" data-idx="1">Kijk eens wat er bij jou op tafel ligt.</p>
-    </div>
-  </div>
-</section>
-
-<style>
-.bridge-line{
-  position:absolute; left:24px; right:24px; margin:0 auto; top:50%;
-  opacity:0; transform:translate(0,-50%);
-  will-change:transform, opacity, filter;
-}
-.bridge-line[data-idx="0"]{ opacity:1; }
-</style>
-
 <!-- KUNNEN WE DIT JAAR IEMAND AANNEMEN — scroll-driven, één inzicht per keer -->
-<section id="decision-scroll" style="height:600vh;" class="relative border-t border-[var(--line)]">
+<section id="decision-scroll" style="height:700vh;" class="relative border-t border-[var(--line)]">
   <div id="decisionSticky" class="sticky top-0 h-screen w-full overflow-hidden flex items-center">
     <div class="container max-w-2xl relative" style="min-height:1px;">
 
       <div class="decision-step" data-step="0">
-        <h2 class="display text-3xl md:text-5xl font-semibold leading-tight">Kunnen we dit jaar iemand aannemen?</h2>
+        <p class="display text-3xl md:text-5xl font-medium">Oké. Genoeg over ons.</p>
+        <p class="mt-5 text-sm md:text-base text-soft">Zo'n gesprek kan er zo uitzien.</p>
       </div>
 
       <div class="decision-step" data-step="1">
+        <h2 class="display text-3xl md:text-5xl font-semibold leading-tight">Kunnen we dit jaar iemand aannemen?</h2>
+      </div>
+
+      <div class="decision-step" data-step="2">
         <p class="text-xs tracking-[0.08em] text-soft mb-5">Wat kost de beslissing?</p>
         <p class="display text-6xl md:text-8xl font-semibold">€4.850</p>
         <p class="mt-3 text-lg">per maand</p>
         <p class="mt-1 text-xs text-soft">totale werkgeverskost</p>
       </div>
 
-      <div class="decision-step" data-step="2">
+      <div class="decision-step" data-step="3">
         <p class="text-xs tracking-[0.08em] text-soft mb-8">Hoe staan we ervoor?</p>
         <div class="max-w-xs">
           <div class="flex items-baseline justify-between border-b border-[var(--line)] pb-3">
@@ -297,7 +291,7 @@ h1,h2,h3,h4,.display{
         </div>
       </div>
 
-      <div class="decision-step" data-step="3">
+      <div class="decision-step" data-step="4">
         <p class="text-xs tracking-[0.08em] text-soft mb-6">Wat verandert er?</p>
         <p class="text-xs text-soft mb-3">Vaste kosten per maand</p>
         <div class="flex items-center gap-4 md:gap-5">
@@ -308,7 +302,7 @@ h1,h2,h3,h4,.display{
         <p class="mt-4 text-xs text-soft">+ €4.850 / maand · vandaag → met medewerker</p>
       </div>
 
-      <div class="decision-step" data-step="4">
+      <div class="decision-step" data-step="5">
         <p class="text-xs tracking-[0.08em] text-soft mb-6">Wat betekent dat?</p>
         <p class="text-xl md:text-2xl font-medium leading-snug max-w-md">De medewerker is betaalbaar.</p>
         <p class="text-xl md:text-2xl font-medium leading-snug max-w-md text-soft mt-1">De vraag is of de extra capaciteit ook extra marge oplevert.</p>
@@ -316,7 +310,7 @@ h1,h2,h3,h4,.display{
         <p class="mt-2 text-xs text-soft max-w-sm">nodig om de extra werkgeverskost te dragen bij een brutomarge van 34,5%.</p>
       </div>
 
-      <div class="decision-step" data-step="5">
+      <div class="decision-step" data-step="6">
         <p class="text-xs tracking-[0.08em] text-soft mb-4">Onze conclusie</p>
         <p class="display text-7xl md:text-9xl font-extrabold" style="color:var(--accent);">Doen.</p>
         <p class="mt-7 text-soft leading-relaxed max-w-md">
@@ -339,7 +333,7 @@ h1,h2,h3,h4,.display{
 <style>
 .decision-step{
   position:absolute;
-  left:24px; right:24px;
+  left:0; right:0;
   top:50%;
   opacity:0;
   transform:translate(0,-50%);
@@ -351,29 +345,31 @@ h1,h2,h3,h4,.display{
 <section id="hoe-het-werkt" style="height:480vh;" class="relative border-t border-[var(--line)]">
   <div id="chairSticky" class="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
 
-    <!-- abstracte boardroomtafel -->
+    <!-- abstracte boardroomtafel + perspectieven, gedeeld op dezelfde aspect-box -->
     <div id="tableLayer" class="absolute inset-0 flex items-center justify-center pointer-events-none" style="opacity:0;">
-      <svg viewBox="0 0 800 500" class="w-[94%] max-w-3xl h-auto" style="overflow:visible;">
-        <ellipse cx="400" cy="250" rx="340" ry="150" fill="none" stroke="var(--line)" stroke-width="1.5"/>
-        <circle cx="400" cy="70"  r="8" fill="var(--ink-soft)" opacity="0.3"/>
-        <circle cx="620" cy="108" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-        <circle cx="722" cy="250" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-        <circle cx="620" cy="392" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-        <circle cx="180" cy="392" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-        <circle cx="78"  cy="250" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-        <circle cx="180" cy="108" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-        <circle id="emptySeat" cx="400" cy="430" r="11" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 4"/>
-      </svg>
-    </div>
+      <div class="relative w-[94%] max-w-3xl" style="aspect-ratio:800/500;">
+        <svg viewBox="0 0 800 500" class="w-full h-full" style="overflow:visible;">
+          <ellipse cx="400" cy="250" rx="340" ry="150" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+          <circle cx="400" cy="70"  r="8" fill="var(--ink-soft)" opacity="0.3"/>
+          <circle cx="620" cy="108" r="8" fill="var(--ink-soft)" opacity="0.3"/>
+          <circle cx="722" cy="250" r="8" fill="var(--ink-soft)" opacity="0.3"/>
+          <circle cx="620" cy="392" r="8" fill="var(--ink-soft)" opacity="0.3"/>
+          <circle cx="180" cy="392" r="8" fill="var(--ink-soft)" opacity="0.3"/>
+          <circle cx="78"  cy="250" r="8" fill="var(--ink-soft)" opacity="0.3"/>
+          <circle cx="180" cy="108" r="8" fill="var(--ink-soft)" opacity="0.3"/>
+          <circle id="emptySeat" cx="400" cy="430" r="11" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 4"/>
+        </svg>
 
-    <!-- perspectieven aan tafel — één voor één -->
-    <div id="wordsLayer" class="absolute inset-0 pointer-events-none">
-      <span class="perspective-word" style="left:16%; top:11%;">GROEI</span>
-      <span class="perspective-word" style="right:19%; top:7%;">CASH</span>
-      <span class="perspective-word" style="right:6%; top:44%;">MARGE</span>
-      <span class="perspective-word" style="left:5%; top:57%;">RISICO</span>
-      <span class="perspective-word" style="right:15%; bottom:14%;">INVESTEREN</span>
-      <span class="perspective-word" style="left:24%; bottom:9%;">UITBREIDEN</span>
+        <!-- perspectieven aan tafel — één voor één, relatief aan de tafel zelf -->
+        <div id="wordsLayer" class="absolute inset-0 pointer-events-none">
+          <span class="perspective-word" style="left:16%; top:11%;">GROEI</span>
+          <span class="perspective-word" style="right:19%; top:7%;">CASH</span>
+          <span class="perspective-word" style="right:6%; top:44%;">MARGE</span>
+          <span class="perspective-word" style="left:5%; top:57%;">RISICO</span>
+          <span class="perspective-word" style="right:15%; bottom:14%;">INVESTEREN</span>
+          <span class="perspective-word" style="left:24%; bottom:9%;">UITBREIDEN</span>
+        </div>
+      </div>
     </div>
 
     <!-- tekstmomenten -->
@@ -403,13 +399,16 @@ h1,h2,h3,h4,.display{
   color:var(--ink-soft);
   will-change:opacity;
 }
+@media (max-width:420px){
+  .perspective-word{ font-size:0.6rem; letter-spacing:0.1em; }
+}
 #wordsLayer{
   opacity:0;
   will-change:opacity, transform;
 }
 .chair-frame{
   position:absolute;
-  left:24px; right:24px;
+  left:0; right:0;
   margin:0 auto;
   top:50%;
   opacity:0;
@@ -759,12 +758,13 @@ h1,h2,h3,h4,.display{
   const smooth = (v) => v * v * (3 - 2 * v);
 
   const stages = {
-    0: { inS: 0,    inE: 0.03, outS: 0.15, outE: 0.19 },
-    1: { inS: 0.17, inE: 0.21, outS: 0.31, outE: 0.35 },
-    2: { inS: 0.33, inE: 0.38, outS: 0.49, outE: 0.53 },
-    3: { inS: 0.51, inE: 0.55, outS: 0.66, outE: 0.70 },
-    4: { inS: 0.68, inE: 0.72, outS: 0.83, outE: 0.87 },
-    5: { inS: 0.85, inE: 0.90, outS: 1.05, outE: 1.06 }
+    0: { inS: 0,     inE: 0,     outS: 0.1229, outE: 0.1629 },
+    1: { inS: 0.1629, inE: 0.1929, outS: 0.2657, outE: 0.3057 },
+    2: { inS: 0.3057, inE: 0.3357, outS: 0.4086, outE: 0.4486 },
+    3: { inS: 0.4486, inE: 0.4786, outS: 0.5514, outE: 0.5914 },
+    4: { inS: 0.5914, inE: 0.6214, outS: 0.6943, outE: 0.7343 },
+    5: { inS: 0.7343, inE: 0.7643, outS: 0.8371, outE: 0.8771 },
+    6: { inS: 0.8771, inE: 0.9071, outS: 1.05,   outE: 1.06   }
   };
   const rampIn = (p, s, e) => (e <= s ? 1 : clamp((p - s) / (e - s), 0, 1));
   const rampOut = (p, s, e) => (e <= s ? 1 : 1 - clamp((p - s) / (e - s), 0, 1));
@@ -780,14 +780,16 @@ h1,h2,h3,h4,.display{
     steps.forEach((step) => {
       const i = parseInt(step.getAttribute('data-step'), 10);
       const st = stages[i];
+      const quiet = step.classList.contains('decision-step-quiet');
       const ei = smooth(rampIn(progress, st.inS, st.inE));
       const eo = smooth(rampOut(progress, st.outS, st.outE));
       const opacity = ei * eo;
-      const entryPx = (1 - ei) * 16;
-      const exitPx = -(1 - eo) * 18;
+      const amp = quiet ? 7 : 16;
+      const entryPx = (1 - ei) * amp;
+      const exitPx = -(1 - eo) * (quiet ? 8 : 18);
       step.style.opacity = opacity;
       step.style.transform = 'translate(0, calc(-50% + ' + (entryPx + exitPx) + 'px))';
-      step.style.filter = 'blur(' + ((1 - opacity) * 4) + 'px)';
+      step.style.filter = quiet ? 'none' : 'blur(' + ((1 - opacity) * 4) + 'px)';
     });
   }
 
@@ -865,54 +867,6 @@ h1,h2,h3,h4,.display{
       emptySeat.setAttribute('stroke-dasharray', t > 0.5 ? 'none' : '3 4');
       emptySeat.style.opacity = 0.55 + t * 0.45;
     }
-  }
-
-  function onScroll(){
-    if (!ticking) { requestAnimationFrame(update); ticking = true; }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
-})();
-
-// ---- Founders → Decision: conversationele overgang ----
-(function(){
-  const wrap = document.getElementById('bridge-scroll');
-  if (!wrap) return;
-  const lines = Array.from(document.querySelectorAll('.bridge-line'));
-
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-  const smooth = (v) => v * v * (3 - 2 * v);
-
-  const stages = {
-    0: { inS: 0,    inE: 0,    outS: 0.32, outE: 0.46, quiet: false },
-    1: { inS: 0.40, inE: 0.52, outS: 0.72, outE: 0.85, quiet: true }
-  };
-  const rampIn = (p, s, e) => (e <= s ? 1 : clamp((p - s) / (e - s), 0, 1));
-  const rampOut = (p, s, e) => (e <= s ? 1 : 1 - clamp((p - s) / (e - s), 0, 1));
-
-  let ticking = false;
-
-  function update(){
-    ticking = false;
-    const rect = wrap.getBoundingClientRect();
-    const total = wrap.offsetHeight - window.innerHeight;
-    const progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
-
-    lines.forEach((line) => {
-      const i = parseInt(line.getAttribute('data-idx'), 10);
-      const st = stages[i];
-      const ei = smooth(rampIn(progress, st.inS, st.inE));
-      const eo = smooth(rampOut(progress, st.outS, st.outE));
-      const opacity = ei * eo;
-      const amp = st.quiet ? 8 : 20;
-      const entryPx = (1 - ei) * amp;
-      const exitPx = -(1 - eo) * (st.quiet ? 9 : 22);
-      line.style.opacity = opacity;
-      line.style.transform = 'translate(0, calc(-50% + ' + (entryPx + exitPx) + 'px))';
-      line.style.filter = st.quiet ? 'none' : 'blur(' + ((1 - opacity) * 4) + 'px)';
-    });
   }
 
   function onScroll(){
