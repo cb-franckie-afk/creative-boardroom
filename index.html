@@ -6,7 +6,7 @@
 <title>Creative Boardroom — Betere beslissingen. Een sterker bedrijf.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 :root{
@@ -29,10 +29,16 @@ body{
   overflow-x:hidden;
 }
 h1,h2,h3,h4,.display{
-  font-family:'Inter Tight',system-ui,sans-serif;
-  letter-spacing:-0.02em;
+  font-family:'Fraunces',Georgia,'Times New Roman',serif;
+  letter-spacing:-0.01em;
+  font-optical-sizing:auto;
   overflow-wrap:break-word;
   word-break:break-word;
+}
+.figure{
+  font-family:'IBM Plex Mono','SF Mono',ui-monospace,monospace;
+  letter-spacing:-0.01em;
+  font-feature-settings:"tnum" 1, "zero" 1;
 }
 .container{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px;}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;}
@@ -135,7 +141,7 @@ h1,h2,h3,h4,.display{
   <div class="container flex items-center justify-between h-16">
     <a href="#hero-scroll" class="font-semibold tracking-tight text-[15px] display">CREATIVE BOARDROOM</a>
     <div class="hidden md:flex items-center gap-8 text-sm">
-      <a href="#hoe-het-werkt" class="nav-link">Hoe het werkt</a>
+      <a href="#decision-scroll" class="nav-link">Hoe het werkt</a>
       <a href="#scan" class="nav-link">Boardroom Scan</a>
       <a href="#formules" class="nav-link">Aanbod</a>
     </div>
@@ -151,7 +157,7 @@ h1,h2,h3,h4,.display{
   </div>
   <div id="mobileMenu" class="md:hidden border-t border-[var(--line)]">
     <div class="container py-4 flex flex-col gap-1">
-      <a href="#hoe-het-werkt" class="py-3 text-[15px] nav-link">Hoe het werkt</a>
+      <a href="#decision-scroll" class="py-3 text-[15px] nav-link">Hoe het werkt</a>
       <a href="#scan" class="py-3 text-[15px] nav-link">Boardroom Scan</a>
       <a href="#formules" class="py-3 text-[15px] nav-link">Aanbod</a>
       <a href="#final-cta" class="mt-3 btn-primary text-sm">Plan een gesprek</a>
@@ -167,10 +173,10 @@ h1,h2,h3,h4,.display{
     <div id="heroDark" class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 40%, rgba(27,26,22,0.06), transparent 65%); opacity:0;"></div>
 
     <div id="heroNumbers" class="absolute inset-0 pointer-events-none opacity-0">
-      <span class="absolute left-[8%] top-[28%] text-sm md:text-base text-soft" style="filter:blur(0.2px);">€840.000</span>
-      <span class="absolute right-[10%] top-[22%] text-sm md:text-base" style="color:var(--accent);">+12%</span>
-      <span class="absolute left-[12%] bottom-[26%] text-sm md:text-base text-soft">marge —4%</span>
-      <span class="absolute right-[9%] bottom-[30%] text-sm md:text-base" style="color:var(--accent);">64 / 100</span>
+      <span class="figure absolute left-[8%] top-[28%] text-sm md:text-base text-soft" style="filter:blur(0.2px);">€840.000</span>
+      <span class="figure absolute right-[10%] top-[22%] text-sm md:text-base" style="color:var(--accent);">+12%</span>
+      <span class="figure absolute left-[12%] bottom-[26%] text-sm md:text-base text-soft">marge —4%</span>
+      <span class="figure absolute right-[9%] bottom-[30%] text-sm md:text-base" style="color:var(--accent);">64 / 100</span>
     </div>
 
     <div id="heroBoardroom" class="absolute inset-0 pointer-events-none opacity-0 flex items-center justify-center">
@@ -196,9 +202,9 @@ h1,h2,h3,h4,.display{
         <p class="display text-2xl md:text-5xl font-medium leading-[1.2] md:leading-[1.15] max-w-xl mx-auto">
           Creative Boardroom zit mee aan tafel wanneer de beslissingen groter worden.
         </p>
-        <div id="heroCtas" class="mt-9 flex flex-col sm:flex-row gap-3 justify-center opacity-0">
-          <a href="#scan" class="btn-primary">Doe de Boardroom Scan</a>
-          <a href="#final-cta" class="btn-ghost">Plan een gesprek →</a>
+        <div id="heroCtas" class="mt-9 flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center opacity-0 w-full max-w-xs sm:max-w-none mx-auto px-2 sm:px-0">
+          <a href="#scan" class="btn-primary w-full sm:w-auto text-center">Doe de Boardroom Scan</a>
+          <a href="#final-cta" class="btn-ghost w-full sm:w-auto text-center">Plan een gesprek →</a>
         </div>
       </div>
     </div>
@@ -210,7 +216,7 @@ h1,h2,h3,h4,.display{
 <style>
 .hero-line{
   position:absolute;
-  left:0; right:0; margin:0 auto;
+  left:24px; right:24px; margin:0 auto;
   top:50%;
   opacity:0;
   will-change:transform, opacity, filter;
@@ -218,10 +224,59 @@ h1,h2,h3,h4,.display{
 .hero-line[data-idx="0"]{ opacity:1; transform:translate(0,-50%); }
 </style>
 
+<!-- HERKENNING: 's avonds in bed -->
+<section id="bed-scroll" style="height:520vh;" class="relative">
+  <div id="bedSticky" class="sticky top-0 h-screen w-full overflow-hidden" style="background:var(--ink);">
+
+    <!-- atmosfeer: zachte gloed + een abstracte horizonlijn (kussen/schouder) -->
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at 50% 80%, rgba(227,69,43,0.07), transparent 60%);"></div>
+    <svg class="absolute bottom-0 left-0 w-full pointer-events-none" viewBox="0 0 1000 300" preserveAspectRatio="none" style="height:34vh;">
+      <path d="M0,300 L0,150 Q500,40 1000,150 L1000,300 Z" fill="rgba(247,245,238,0.05)"/>
+      <path d="M0,300 L0,205 Q500,115 1000,205 L1000,300 Z" fill="rgba(247,245,238,0.04)"/>
+    </svg>
+
+    <!-- gedachten: los zwevend, geen lijst, geen ballonnen -->
+    <p id="bt1" class="bed-thought text-xl md:text-2xl font-medium" style="left:50%; top:20%;">Kunnen we iemand aannemen?</p>
+    <p id="bt2" class="bed-thought text-lg md:text-xl" style="left:74%; top:12%;">Nieuwe collectie</p>
+    <p id="bt3" class="bed-thought text-sm md:text-base" style="left:28%; top:35%; max-width:190px;">Waarom groeit onze omzet, maar niet onze winst?</p>
+    <p id="bt4" class="bed-thought figure text-lg md:text-xl font-medium" style="left:80%; top:31%;">€4.850 / maand</p>
+    <p id="bt5" class="bed-thought text-base md:text-lg" style="left:15%; top:16%;">Tweede winkel?</p>
+    <p id="bt6" class="bed-thought text-xs md:text-sm" style="left:11%; top:45%;">Cash</p>
+    <p id="bt7" class="bed-thought text-xs md:text-sm" style="left:88%; top:47%;">Marge</p>
+    <p id="bt8" class="bed-thought text-base md:text-lg" style="left:57%; top:43%;">Investeren?</p>
+    <p id="bt9" class="bed-thought text-xs md:text-sm" style="left:38%; top:53%;">+1 medewerker</p>
+
+    <!-- afsluitende, sterkere gedachte -->
+    <p id="bedClosing" class="bed-thought display text-2xl md:text-4xl font-medium" style="left:50%; top:62%; max-width:520px; color:var(--bg);">Wie zit er naast je wanneer je dit moet beslissen?</p>
+
+  </div>
+</section>
+
+<style>
+.bed-thought{
+  position:absolute;
+  transform:translate(-50%,-50%);
+  margin:0 auto;
+  color:var(--bg);
+  opacity:0;
+  text-align:center;
+  line-height:1.3;
+  will-change:opacity, transform, filter;
+}
+@media (max-width:480px){
+  #bt2{ left:64% !important; }
+  #bt4{ left:70% !important; }
+  #bt5{ left:22% !important; }
+  #bt6{ left:20% !important; }
+  #bt7{ left:80% !important; }
+  #bt3{ max-width:150px !important; }
+}
+</style>
+
 <!-- FOUNDERS -->
 <section id="founders" class="py-20 md:py-28 border-t border-[var(--line)]">
   <div class="container">
-    <h2 class="display text-3xl md:text-5xl font-semibold max-w-xl leading-tight reveal">Maar wie zit er dan eigenlijk aan tafel?</h2>
+    <h2 class="display text-3xl md:text-5xl font-semibold max-w-xl leading-tight reveal">Dat zijn wij, bijvoorbeeld.</h2>
 
     <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
       <figure class="reveal">
@@ -268,7 +323,7 @@ h1,h2,h3,h4,.display{
 
       <div class="decision-step" data-step="2">
         <p class="text-xs tracking-[0.08em] text-soft mb-5">Wat kost de beslissing?</p>
-        <p class="display text-6xl md:text-8xl font-semibold">€4.850</p>
+        <p class="figure text-6xl md:text-8xl font-semibold">€4.850</p>
         <p class="mt-3 text-lg">per maand</p>
         <p class="mt-1 text-xs text-soft">totale werkgeverskost</p>
       </div>
@@ -278,15 +333,15 @@ h1,h2,h3,h4,.display{
         <div class="max-w-xs">
           <div class="flex items-baseline justify-between border-b border-[var(--line)] pb-3">
             <span class="text-soft text-sm">Omzet</span>
-            <span class="display text-2xl font-semibold">€420k</span>
+            <span class="figure text-2xl font-semibold">€420k</span>
           </div>
           <div class="flex items-baseline justify-between border-b border-[var(--line)] py-3">
             <span class="text-soft text-sm">Brutowinst</span>
-            <span class="display text-2xl font-semibold">€145k</span>
+            <span class="figure text-2xl font-semibold">€145k</span>
           </div>
           <div class="flex items-baseline justify-between pt-3">
             <span class="text-soft text-sm">Cash</span>
-            <span class="display text-2xl font-semibold">€78k</span>
+            <span class="figure text-2xl font-semibold">€78k</span>
           </div>
         </div>
       </div>
@@ -295,9 +350,9 @@ h1,h2,h3,h4,.display{
         <p class="text-xs tracking-[0.08em] text-soft mb-6">Wat verandert er?</p>
         <p class="text-xs text-soft mb-3">Vaste kosten per maand</p>
         <div class="flex items-center gap-4 md:gap-5">
-          <span class="display text-3xl md:text-5xl font-semibold text-soft">€31k</span>
+          <span class="figure text-3xl md:text-5xl font-semibold text-soft">€31k</span>
           <span class="text-soft text-xl">→</span>
-          <span class="display text-3xl md:text-5xl font-semibold">€35,9k</span>
+          <span class="figure text-3xl md:text-5xl font-semibold">€35,9k</span>
         </div>
         <p class="mt-4 text-xs text-soft">+ €4.850 / maand · vandaag → met medewerker</p>
       </div>
@@ -306,7 +361,7 @@ h1,h2,h3,h4,.display{
         <p class="text-xs tracking-[0.08em] text-soft mb-6">Wat betekent dat?</p>
         <p class="text-xl md:text-2xl font-medium leading-snug max-w-md">De medewerker is betaalbaar.</p>
         <p class="text-xl md:text-2xl font-medium leading-snug max-w-md text-soft mt-1">De vraag is of de extra capaciteit ook extra marge oplevert.</p>
-        <p class="display text-3xl md:text-4xl font-semibold mt-9">+ €14.100<span class="text-base font-normal text-soft"> omzet / maand</span></p>
+        <p class="text-3xl md:text-4xl font-semibold mt-9"><span class="figure">+ €14.100</span><span class="text-base font-normal text-soft"> omzet / maand</span></p>
         <p class="mt-2 text-xs text-soft max-w-sm">nodig om de extra werkgeverskost te dragen bij een brutomarge van 34,5%.</p>
       </div>
 
@@ -333,83 +388,7 @@ h1,h2,h3,h4,.display{
 <style>
 .decision-step{
   position:absolute;
-  left:0; right:0;
-  top:50%;
-  opacity:0;
-  transform:translate(0,-50%);
-  will-change:transform, opacity, filter;
-}
-</style>
-
-<!-- DE LEGE STOEL -->
-<section id="hoe-het-werkt" style="height:480vh;" class="relative border-t border-[var(--line)]">
-  <div id="chairSticky" class="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-
-    <!-- abstracte boardroomtafel + perspectieven, gedeeld op dezelfde aspect-box -->
-    <div id="tableLayer" class="absolute inset-0 flex items-center justify-center pointer-events-none" style="opacity:0;">
-      <div class="relative w-[94%] max-w-3xl" style="aspect-ratio:800/500;">
-        <svg viewBox="0 0 800 500" class="w-full h-full" style="overflow:visible;">
-          <ellipse cx="400" cy="250" rx="340" ry="150" fill="none" stroke="var(--line)" stroke-width="1.5"/>
-          <circle cx="400" cy="70"  r="8" fill="var(--ink-soft)" opacity="0.3"/>
-          <circle cx="620" cy="108" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-          <circle cx="722" cy="250" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-          <circle cx="620" cy="392" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-          <circle cx="180" cy="392" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-          <circle cx="78"  cy="250" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-          <circle cx="180" cy="108" r="8" fill="var(--ink-soft)" opacity="0.3"/>
-          <circle id="emptySeat" cx="400" cy="430" r="11" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 4"/>
-        </svg>
-
-        <!-- perspectieven aan tafel — één voor één, relatief aan de tafel zelf -->
-        <div id="wordsLayer" class="absolute inset-0 pointer-events-none">
-          <span class="perspective-word" style="left:16%; top:11%;">GROEI</span>
-          <span class="perspective-word" style="right:19%; top:7%;">CASH</span>
-          <span class="perspective-word" style="right:6%; top:44%;">MARGE</span>
-          <span class="perspective-word" style="left:5%; top:57%;">RISICO</span>
-          <span class="perspective-word" style="right:15%; bottom:14%;">INVESTEREN</span>
-          <span class="perspective-word" style="left:24%; bottom:9%;">UITBREIDEN</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- tekstmomenten -->
-    <div class="container relative text-center">
-      <p id="chairFrame3" class="chair-frame display text-2xl md:text-4xl font-medium leading-snug max-w-lg mx-auto">
-        Grote bedrijven hebben mensen voor dit soort gesprekken.
-      </p>
-
-      <p id="chairFrame4" class="chair-frame display text-2xl md:text-4xl font-medium leading-snug max-w-lg mx-auto">
-        Jij hoeft daar niet meteen een heel team voor aan te nemen.
-      </p>
-
-      <div id="chairFrame6" class="chair-frame">
-        <p class="text-xs tracking-[0.14em] text-soft mb-3">CREATIVE BOARDROOM</p>
-        <p class="display text-xl md:text-2xl font-medium max-w-md mx-auto">Een vaste plek aan tafel wanneer de beslissingen groter worden.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<style>
-.perspective-word{
-  position:absolute;
-  font-size:0.75rem;
-  letter-spacing:0.14em;
-  color:var(--ink-soft);
-  will-change:opacity;
-}
-@media (max-width:420px){
-  .perspective-word{ font-size:0.6rem; letter-spacing:0.1em; }
-}
-#wordsLayer{
-  opacity:0;
-  will-change:opacity, transform;
-}
-.chair-frame{
-  position:absolute;
-  left:0; right:0;
-  margin:0 auto;
+  left:24px; right:24px;
   top:50%;
   opacity:0;
   transform:translate(0,-50%);
@@ -441,19 +420,19 @@ h1,h2,h3,h4,.display{
         <p class="mt-3 text-soft leading-relaxed max-w-lg">Maar de cashpositie werd steeds krapper. De groei zat vooral in voorraad, de brutomarge lag lager dan gedacht, en bepaalde wholesale-orders leverden omzet op maar weinig cash op korte termijn.</p>
         <div class="mt-8 flex flex-wrap gap-x-10 gap-y-4">
           <div>
-            <p class="display text-xl font-semibold">€1,8M → €2,7M</p>
+            <p class="figure text-xl font-semibold">€1,8M → €2,7M</p>
             <p class="text-xs text-soft mt-1">omzet</p>
           </div>
           <div>
-            <p class="display text-xl font-semibold">+50%</p>
+            <p class="figure text-xl font-semibold">+50%</p>
             <p class="text-xs text-soft mt-1">omzet</p>
           </div>
           <div>
-            <p class="display text-xl font-semibold" style="color:var(--accent);">−€94K</p>
+            <p class="figure text-xl font-semibold" style="color:var(--accent);">−€94K</p>
             <p class="text-xs text-soft mt-1">cash</p>
           </div>
           <div>
-            <p class="display text-xl font-semibold">+5,8 pp</p>
+            <p class="figure text-xl font-semibold">+5,8 pp</p>
             <p class="text-xs text-soft mt-1">brutomarge</p>
           </div>
         </div>
@@ -466,15 +445,15 @@ h1,h2,h3,h4,.display{
         <p class="mt-3 text-soft leading-relaxed max-w-lg">Toen we de cijfers van de bestaande winkel naast de plannen legden, bleek de huidige marge net genoeg om de winkel zelf te dragen. Een tweede locatie zou voorlopig vooral extra huur en voorraad betekenen, zonder ruimte om tegenslagen op te vangen.</p>
         <div class="mt-8 flex flex-wrap gap-x-10 gap-y-4">
           <div>
-            <p class="display text-xl font-semibold">€480K</p>
+            <p class="figure text-xl font-semibold">€480K</p>
             <p class="text-xs text-soft mt-1">omzet huidige winkel</p>
           </div>
           <div>
-            <p class="display text-xl font-semibold">41%</p>
+            <p class="figure text-xl font-semibold">41%</p>
             <p class="text-xs text-soft mt-1">brutomarge</p>
           </div>
           <div>
-            <p class="display text-xl font-semibold" style="color:var(--accent);">€65K</p>
+            <p class="figure text-xl font-semibold" style="color:var(--accent);">€65K</p>
             <p class="text-xs text-soft mt-1">geschatte extra kost tweede winkel / jaar</p>
           </div>
         </div>
@@ -483,8 +462,8 @@ h1,h2,h3,h4,.display{
 
       <div class="case-panel" data-case="studio">
         <div class="flex flex-wrap gap-x-10 gap-y-2">
-          <p class="display text-3xl md:text-4xl font-semibold">98%<span class="text-base font-normal text-soft"> bezetting</span></p>
-          <p class="display text-3xl md:text-4xl font-semibold" style="color:var(--accent);">−18%<span class="text-base font-normal text-soft"> nettowinst</span></p>
+          <p class="text-3xl md:text-4xl font-semibold"><span class="figure">98%</span><span class="text-base font-normal text-soft"> bezetting</span></p>
+          <p class="text-3xl md:text-4xl font-semibold" style="color:var(--accent);"><span class="figure">−18%</span><span class="text-base font-normal text-soft"> nettowinst</span></p>
         </div>
         <p class="mt-6 text-soft leading-relaxed max-w-lg">Een creatief bureau zat het hele jaar vrijwel volgeboekt. Meer projecten dan ooit, een voller team.</p>
         <p class="mt-3 text-soft leading-relaxed max-w-lg">Maar de uurtarieven waren al twee jaar niet meegegroeid met de kosten, en een deel van de tijd ging op aan revisies die niet apart gefactureerd werden. Het effectieve uurtarief daalde zonder dat iemand dat had gezien.</p>
@@ -494,8 +473,8 @@ h1,h2,h3,h4,.display{
       <div class="case-panel" data-case="ecommerce">
         <h3 class="display text-2xl md:text-3xl font-semibold leading-snug">"Onze omzet is verdubbeld. Onze marge niet."</h3>
         <div class="mt-6 flex flex-wrap gap-x-10 gap-y-2">
-          <p class="display text-3xl md:text-4xl font-semibold">×2<span class="text-base font-normal text-soft"> omzet</span></p>
-          <p class="display text-3xl md:text-4xl font-semibold" style="color:var(--accent);">22% → 14%<span class="text-base font-normal text-soft"> brutomarge</span></p>
+          <p class="text-3xl md:text-4xl font-semibold"><span class="figure">×2</span><span class="text-base font-normal text-soft"> omzet</span></p>
+          <p class="text-3xl md:text-4xl font-semibold" style="color:var(--accent);"><span class="figure">22% → 14%</span><span class="text-base font-normal text-soft"> brutomarge</span></p>
         </div>
         <p class="mt-6 text-soft leading-relaxed max-w-lg">Een webshop verdubbelde haar omzet binnen een jaar, vooral via betaalde advertenties en kortingsacties.</p>
         <p class="mt-3 text-soft leading-relaxed max-w-lg">Maar advertentiekosten en kortingen aten een steeds groter deel van elke verkoop op. Meer omzet betekende niet meer overschot om mee te groeien.</p>
@@ -572,7 +551,7 @@ h1,h2,h3,h4,.display{
       <div class="scan-step" data-step="result">
         <p class="text-sm text-soft mb-1">Jouw resultaat</p>
         <div class="flex items-end gap-3 mt-2 mb-4">
-          <span class="display text-5xl font-semibold">64</span>
+          <span class="figure text-5xl font-semibold">64</span>
           <span class="text-soft mb-1">/ 100</span>
         </div>
         <p class="leading-relaxed">Je bedrijf groeit. Maar je cashflow en prijszetting verdienen aandacht.</p>
@@ -598,7 +577,7 @@ h1,h2,h3,h4,.display{
 
       <div class="reveal">
         <p class="text-xs tracking-[0.08em] text-soft mb-6">Boardroom</p>
-        <p class="display text-6xl md:text-7xl font-semibold">€1.250</p>
+        <p class="figure text-6xl md:text-7xl font-semibold">€1.250</p>
         <p class="text-soft mt-1">per maand</p>
 
         <p class="mt-8 text-soft leading-relaxed max-w-xs">Voor ondernemers die regelmatig een scherpe blik naast zich willen hebben bij belangrijke beslissingen.</p>
@@ -620,7 +599,7 @@ h1,h2,h3,h4,.display{
 
       <div class="reveal">
         <p class="text-xs tracking-[0.08em] text-soft mb-6">Boardroom+</p>
-        <p class="display text-6xl md:text-7xl font-semibold">€2.250</p>
+        <p class="figure text-6xl md:text-7xl font-semibold">€2.250</p>
         <p class="text-soft mt-1">per maand</p>
 
         <p class="mt-8 text-soft leading-relaxed max-w-xs">Voor bedrijven waar groei, investeringen en grotere beslissingen vaker op tafel liggen.</p>
@@ -668,7 +647,7 @@ h1,h2,h3,h4,.display{
         <p class="text-soft text-sm mt-1">Better decisions. Stronger businesses.</p>
       </div>
       <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-soft">
-        <a href="#hoe-het-werkt" class="nav-link">Hoe het werkt</a>
+        <a href="#decision-scroll" class="nav-link">Hoe het werkt</a>
         <a href="#scan" class="nav-link">Boardroom Scan</a>
         <a href="#formules" class="nav-link">Aanbod</a>
         <a href="#final-cta" class="nav-link">Contact</a>
@@ -748,6 +727,65 @@ h1,h2,h3,h4,.display{
   update();
 })();
 
+// ---- Herkenning: 's avonds in bed — gedachten die blijven hangen ----
+(function(){
+  const wrap = document.getElementById('bed-scroll');
+  if (!wrap) return;
+
+  const thoughts = [
+    { id: 'bt1', inS: 0.08, inE: 0.16, max: 1,    depth: 0    },
+    { id: 'bt5', inS: 0.12, inE: 0.20, max: 0.75, depth: 0.5  },
+    { id: 'bt2', inS: 0.19, inE: 0.27, max: 0.9,  depth: 0.2  },
+    { id: 'bt3', inS: 0.30, inE: 0.40, max: 0.55, depth: 1.3  },
+    { id: 'bt4', inS: 0.44, inE: 0.51, max: 0.95, depth: 0.1  },
+    { id: 'bt6', inS: 0.46, inE: 0.53, max: 0.42, depth: 1.4  },
+    { id: 'bt7', inS: 0.47, inE: 0.54, max: 0.42, depth: 1.4  },
+    { id: 'bt8', inS: 0.49, inE: 0.56, max: 0.78, depth: 0.4  },
+    { id: 'bt9', inS: 0.51, inE: 0.58, max: 0.5,  depth: 0.9  }
+  ];
+  const closing = document.getElementById('bedClosing');
+
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const smooth = (v) => v * v * (3 - 2 * v);
+  const rampIn = (p, s, e) => (e <= s ? 1 : clamp((p - s) / (e - s), 0, 1));
+
+  let ticking = false;
+
+  function update(){
+    ticking = false;
+    const rect = wrap.getBoundingClientRect();
+    const total = wrap.offsetHeight - window.innerHeight;
+    const progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
+
+    thoughts.forEach((t) => {
+      const el = document.getElementById(t.id);
+      if (!el) return;
+      const ei = smooth(rampIn(progress, t.inS, t.inE));
+      const offsetPx = (1 - ei) * 16;
+      const scale = 0.96 + ei * 0.04;
+      el.style.opacity = ei * t.max;
+      el.style.filter = 'blur(' + ((1 - ei) * 5 + ei * t.depth) + 'px)';
+      el.style.transform = 'translate(-50%, calc(-50% + ' + offsetPx + 'px)) scale(' + scale + ')';
+    });
+
+    if (closing) {
+      const ei = smooth(rampIn(progress, 0.68, 0.80));
+      const offsetPx = (1 - ei) * 14;
+      closing.style.opacity = ei;
+      closing.style.filter = 'blur(' + ((1 - ei) * 6) + 'px)';
+      closing.style.transform = 'translate(-50%, calc(-50% + ' + offsetPx + 'px))';
+    }
+  }
+
+  function onScroll(){
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+
 // ---- Scroll-driven Decision Section (één inzicht per keer) ----
 (function(){
   const wrap = document.getElementById('decision-scroll');
@@ -791,82 +829,6 @@ h1,h2,h3,h4,.display{
       step.style.transform = 'translate(0, calc(-50% + ' + (entryPx + exitPx) + 'px))';
       step.style.filter = quiet ? 'none' : 'blur(' + ((1 - opacity) * 4) + 'px)';
     });
-  }
-
-  function onScroll(){
-    if (!ticking) { requestAnimationFrame(update); ticking = true; }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
-})();
-
-// ---- De Lege Stoel: scroll-driven boardroom concept ----
-(function(){
-  const wrap = document.getElementById('hoe-het-werkt');
-  if (!wrap) return;
-  const tableLayer = document.getElementById('tableLayer');
-  const wordsLayer = document.getElementById('wordsLayer');
-  const emptySeat = document.getElementById('emptySeat');
-  const f3 = document.getElementById('chairFrame3');
-  const f4 = document.getElementById('chairFrame4');
-  const f6 = document.getElementById('chairFrame6');
-
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-  const smooth = (v) => v * v * (3 - 2 * v);
-  const rampIn = (p, s, e) => (e <= s ? 1 : clamp((p - s) / (e - s), 0, 1));
-  const rampOut = (p, s, e) => (e <= s ? 1 : 1 - clamp((p - s) / (e - s), 0, 1));
-
-  function applyFrame(el, p, inS, inE, outS, outE){
-    if (!el) return;
-    const ei = smooth(rampIn(p, inS, inE));
-    const eo = smooth(rampOut(p, outS, outE));
-    const opacity = ei * eo;
-    const entryPx = (1 - ei) * 18;
-    const exitPx = -(1 - eo) * 20;
-    el.style.opacity = opacity;
-    el.style.transform = 'translate(0, calc(-50% + ' + (entryPx + exitPx) + 'px))';
-    el.style.filter = 'blur(' + ((1 - opacity) * 4) + 'px)';
-  }
-
-  // scroll 1: alle woorden verschijnen als één groep en blijven daarna permanent staan
-  const wordsInS = 0.06, wordsInE = 0.18;
-
-  let ticking = false;
-
-  function update(){
-    ticking = false;
-    const rect = wrap.getBoundingClientRect();
-    const total = wrap.offsetHeight - window.innerHeight;
-    const progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
-
-    if (tableLayer){
-      const ei = smooth(rampIn(progress, 0, 0.04));
-      const eo = smooth(rampOut(progress, 0.96, 1));
-      tableLayer.style.opacity = ei * eo;
-    }
-
-    if (wordsLayer){
-      const ei = smooth(rampIn(progress, wordsInS, wordsInE));
-      wordsLayer.style.opacity = ei;
-      wordsLayer.style.transform = 'translateY(' + ((1 - ei) * 14) + 'px)';
-    }
-
-    // scroll 2, 3, 4 — teksten volgen na elkaar, woorden blijven ongemoeid
-    applyFrame(f3, progress, 0.28, 0.36, 0.46, 0.52);
-    applyFrame(f4, progress, 0.54, 0.62, 0.72, 0.78);
-    applyFrame(f6, progress, 0.80, 0.88, 1.05, 1.06);
-
-    if (emptySeat){
-      const t = smooth(rampIn(progress, 0.54, 0.80));
-      const r = 11 + t * 7;
-      const sw = 1.5 + t * 1.8;
-      emptySeat.setAttribute('r', r.toFixed(1));
-      emptySeat.setAttribute('stroke-width', sw.toFixed(2));
-      emptySeat.setAttribute('stroke-dasharray', t > 0.5 ? 'none' : '3 4');
-      emptySeat.style.opacity = 0.55 + t * 0.45;
-    }
   }
 
   function onScroll(){
